@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Node structure definition
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Head pointer to the start of the list
+struct Node* head = NULL;
+
+// Function to insert a node at the end of the list
+void insertNode(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+
+    // If the list is empty
+    if (head == NULL) {
+        head = newNode;
+    } else {
+        struct Node* temp = head;
+        // Traverse to the end of the list
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+
+    printf("Node inserted successfully.\n");
+}
+
+// Function to delete a node with a given value
+void deleteNode(int value) {
+    struct Node *temp = head, *prev = NULL;
+
+    // If the list is empty
+    if (head == NULL) {
+        printf("List is empty. Nothing to delete.\n");
+        return;
+    }
+
+    // If the node to be deleted is the head
+    if (head->data == value) {
+        head = head->next;
+        free(temp);
+        printf("Node deleted successfully.\n");
+        return;
+    }
+
+    // Search for the node to delete
+    while (temp != NULL && temp->data != value) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    // If the node is not found
+    if (temp == NULL) {
+        printf("Node with value %d not found.\n", value);
+        return;
+    }
+
+    // Unlink and delete the node
+    prev->next = temp->next;
+    free(temp);
+    printf("Node deleted successfully.\n");
+}
+
+// Function to traverse and print the linked list
+void displayList() {
+    struct Node* temp = head;
+
+    if (head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    printf("Linked List: ");
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+           case 4:
+                 printf("Exiting program.\n");
+            exit(0);
+        default:
+            printf("Invalid choice. Please try again.\n");
+        }
+    }
+
+    return 0;
+}
